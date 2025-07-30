@@ -1,0 +1,67 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  color: #fff;
+  font-family: sans-serif;
+}
+.ranking-list {
+  list-style: none;
+  margin: 0;
+  padding: 13px;
+}
+.rank-item {
+  margin-bottom: 19px;
+  text-align: center;
+}
+.rank-badge {
+  display: inline-block;
+  width: 80px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 10px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.rank1 .rank-badge { background-image: url('crown-gold.svg'); }
+.rank2 .rank-badge { background-image: url('crown-silver.svg'); }
+.rank3 .rank-badge { background-image: url('crown-bronze.svg'); }
+
+.top-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.menu-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 5px;
+  transform: translateX(0.6cm);
+}
+.right {
+  flex: 1;
+  text-align: center;
+}
+.popularity {
+  font-size: 0.9rem;
+  margin-bottom: 3px;
+}
+.name {
+  font-size: 1rem;
+  font-weight: 600;
+}
+.separator {
+  border-bottom: 1px dotted #fff;
+  margin-bottom: 10px;
+}
+.desc {
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
