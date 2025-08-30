@@ -12,19 +12,25 @@ async function loadRanking() {
   // コメント取得
   const { data: comments, error: commentErr } = await supabase
     .from('find_comments')
-    .select('menu_id')
+    .select('menu_id, created_at')
     .gte('created_at', firstDay);
-  if (commentErr) { console.error('コメント取得エラー:', commentErr); return; }
 
-  // 件数カウント 
+  if (commentErr) {
+    console.error('コメント取得エラー:', commentErr);
+    return;
+  }
+
+  // 件数カウント
   const counts = comments.reduce((acc, { menu_id }) => {
     acc[menu_id] = (acc[menu_id] || 0) + 1;
     return acc;
   }, {});
+
   const top3 = Object.entries(counts)
-    .sort(([,a], [,b]) => b - a)
+    .sort(([, a], [, b]) => b - a)
     .slice(0, 3)
-    .map(([id, cnt]) => ({ id: +id, cnt }));
+    .map(([id, cnt]) => ({ id: Number(id), cnt }));
+
   if (!top3.length) return;
 
   // メニュー詳細取得
@@ -33,33 +39,44 @@ async function loadRanking() {
     .from('find_menus')
     .select('id, name_jp, description_jp, image_url')
     .in('id', ids);
-  if (menuErr) { console.error('メニュー取得エラー:', menuErr); return; }
+
+  if (menuErr) {
+    console.error('メニュー取得エラー:', menuErr);
+    return;
+  }
 
   const menuMap = Object.fromEntries(menus.map(m => [m.id, m]));
+
   top3.forEach((item, idx) => {
     const rank = idx + 1;
     const li   = document.querySelector(`.rank${rank}`);
     const menu = menuMap[item.id] || {};
 
     // 画像
-    if (menu.image_url) li.querySelector('.menu-img').src = menu.image_url;
+    const img = li.querySelector('.menu-img');
+    if (img && menu.image_url) img.src = menu.image_url;
 
     // 人気表示（❤ 人気 × n人）
-    li.querySelector('.popularity').innerHTML =
-      `<span class="heart">❤</span> 人気 × ${item.cnt}人`;
+    const pop = li.querySelector('.popularity');
+    if (pop) pop.innerHTML = `<span class="heart">❤</span> 人気 × ${item.cnt}人`;
 
     // 料理名・説明
-    li.querySelector('.name').textContent = menu.name_jp || '';
-    const desc = menu.description_jp || '';
-    const shortDesc = desc.includes('。') ? desc.split('。')[0] + '。' : desc;
-    li.querySelector('.desc').textContent = shortDesc;
+    const nameEl = li.querySelector('.name');
+    if (nameEl) nameEl.textContent = menu.name_jp || '';
 
-    // 順位テキスト（王冠中央）
-    li.querySelector('.rank-number').textContent = `${rank}位`;
+    const descEl = li.querySelector('.desc');
+    if (descEl) {
+      const desc = menu.description_jp || '';
+      descEl.textContent = desc.includes('。') ? desc.split('。')[0] + '。' : desc;
+    }
+
+    // 順位テキスト（王冠ではなく li の中央基準）
+    const rankEl = li.querySelector('.rank-number');
+    if (rankEl) rankEl.textContent = `${rank}位`;
   });
 }
 
 window.addEventListener('DOMContentLoaded', loadRanking);
 
-// リアルタイム更新
+// リアルタイム更新（新規コメントで再計算）
 supabase.from('find_comments').on('INSERT', () => loadRanking()).subscribe();
