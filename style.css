@@ -35,7 +35,7 @@ html, body {
   position: relative;
   width: 80px;
   height: 80px;
-  transform: translateX(32px);         /* 少し左へ（以前50px） */
+  transform: translateX(28px);         /* 少し左へ（以前50px） */
 }
 
 .menu-img {
@@ -65,13 +65,13 @@ html, body {
 .crown-bronze { background-image: url('copper.png'); }
 
 /* ===== 順位テキスト ===== */
-.rank-number {
+  .rank-number {
   position: absolute;
-  top: 72px;                           /* 「人気×n人」の下あたりに配置 */
+  top: calc(72px - 1.5cm);   /* 72pxから1.5cm分上へ */
   left: 50%;
   transform: translateX(-50%);
   font-weight: 800;
-  font-size: 1.1rem;                   /* 0.84rem → 1.1rem（1.3倍） */
+  font-size: 1.1rem; 
   text-shadow: 0 2px 3px rgba(0,0,0,0.65);
   z-index: 2;
   pointer-events: none;
