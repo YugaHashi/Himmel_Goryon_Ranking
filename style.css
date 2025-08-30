@@ -1,4 +1,3 @@
-/* ===== 全体（余白 5% 減） ===== */
 html, body {
   margin: 0;
   padding: 0;
@@ -10,29 +9,40 @@ html, body {
 .ranking-list {
   list-style: none;
   margin: 0;
-  padding: calc(10px * 0.95);      /* 5% 減 */
+  padding: calc(13px * 1.3);   /* 1.3倍 */
 }
 
 .rank-item {
-  margin-bottom: calc(12px * 0.95);/* 5% 減 */
+  margin-bottom: calc(19px * 1.3); /* 1.3倍 */
   text-align: center;
 }
 
-/* ===== 上段（写真＋テキスト横並び） ===== */
+/* 順位テキスト（元の rank-badge スタイル） */
+.rank-badge {
+  display: inline-block;
+  width: 80px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: calc(10px * 1.3); /* 1.3倍 */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  font-size: 0.7rem; /* 0.7倍に縮小 */
+}
+
+/* 王冠背景 */
+.rank1 .rank-badge { background-image: url('crown-gold.svg'); }
+.rank2 .rank-badge { background-image: url('crown-silver.svg'); }
+.rank3 .rank-badge { background-image: url('crown-bronze.svg'); }
+
 .top-row {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: calc(8px * 0.95);
-  margin-bottom: calc(6px * 0.95);
-}
-
-/* ===== 写真周り ===== */
-.photo-wrap {
-  position: relative;
-  width: 80px;
-  height: 80px;
-  transform: translateX(10px); /* ← 料理写真を右へ */
+  margin-bottom: calc(10px * 1.3); /* 1.3倍 */
 }
 
 .menu-img {
@@ -40,69 +50,31 @@ html, body {
   height: 80px;
   border-radius: 50%;
   object-fit: cover;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.55);
+  margin-right: 5px;
+  transform: translateX(20px); /* さらに右へ移動 */
 }
 
-/* ===== 王冠（写真の上に重ねる・少し上に移動） ===== */
-.crown {
-  position: absolute;
-  left: 50%;
-  top: -40px; /* ← 写真と重ならないよう少し上へ */
-  transform: translateX(-50%) scale(1.3);
-  width: 80px;
-  height: 58px;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  pointer-events: none;
-}
-
-/* 王冠画像：金/銀/銅 */
-.crown-gold   { background-image: url('gold.png'); }
-.crown-silver { background-image: url('gold.png'); filter: grayscale(100%) brightness(1.35); }
-.crown-bronze { background-image: url('copper.png'); }
-
-/* ===== 順位テキスト（王冠中央に配置） ===== */
-.rank-number {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-weight: 800;
-  font-size: 1.2rem; /* 1.2倍 */
-  text-shadow: 0 2px 3px rgba(0,0,0,0.65);
-}
-.rank1 .rank-number { color: #FFD54D; } /* 金 */
-.rank2 .rank-number { color: #C0C0C0; } /* 銀 */
-.rank3 .rank-number { color: #B87333; } /* 銅 */
-
-/* ===== 右側テキスト ===== */
 .right {
   flex: 1;
   text-align: center;
 }
 
-/* ❤ は赤色、「人気 × n人」表記 */
 .popularity {
   font-size: 0.9rem;
-  margin-bottom: calc(2px * 0.95);
+  margin-bottom: calc(3px * 1.3);
 }
-.popularity .heart { color: #e11616; }
 
-/* 料理名：シャドウ付与 */
 .name {
   font-size: 1rem;
-  font-weight: 700;
-  text-shadow: 0 1.5px 3px rgba(0,0,0,0.75);
+  font-weight: 600;
 }
 
-/* 区切りと説明：少し圧縮 */
 .separator {
   border-bottom: 1px dotted #fff;
-  margin: calc(6px * 0.95) 0;
+  margin-bottom: calc(10px * 1.3);
 }
+
 .desc {
-  font-size: 0.85rem;
-  line-height: 1.3;
-  margin-top: 2px;
+  font-size: 0.9rem;
+  line-height: 1.4;
 }
