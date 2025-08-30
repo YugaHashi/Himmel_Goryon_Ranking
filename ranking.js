@@ -1,4 +1,4 @@
-import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'; 
 
 const supabase = createClient(
   'https://labmhtrafdslfwqmzgky.supabase.co',
@@ -18,7 +18,6 @@ async function loadRanking() {
     console.error('コメント取得エラー:', commentErr);
     return;
   }
-  console.log('取得したコメント件数:', comments.length);
 
   // 件数カウント
   const counts = comments.reduce((acc, { menu_id }) => {
@@ -44,7 +43,6 @@ async function loadRanking() {
     console.error('メニュー取得エラー:', menuErr);
     return;
   }
-  console.log('取得したメニュー情報:', menus);
 
   const menuMap = Object.fromEntries(menus.map(m => [m.id, m]));
   top3.forEach((item, idx) => {
@@ -55,7 +53,7 @@ async function loadRanking() {
     if (menu.image_url) {
       li.querySelector('.menu-img').src = menu.image_url;
     }
-    li.querySelector('.popularity').textContent = `★ 人気：${item.cnt}人`;
+    li.querySelector('.popularity').innerHTML = `<span class="heart">💓</span> 人気：${item.cnt}人`;
     li.querySelector('.name').textContent       = menu.name_jp || '';
     const desc = menu.description_jp || '';
     const shortDesc = desc.includes('。') ? desc.split('。')[0] + '。' : desc;
@@ -69,7 +67,6 @@ window.addEventListener('DOMContentLoaded', loadRanking);
 supabase
   .from('find_comments')
   .on('INSERT', () => {
-    console.log('新しいコメント検知→ランキング更新');
     loadRanking();
   })
   .subscribe();
