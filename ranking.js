@@ -16,7 +16,7 @@ async function loadRanking() {
     .gte('created_at', firstDay);
   if (commentErr) { console.error('コメント取得エラー:', commentErr); return; }
 
-  // 件数カウント → 上位3つ
+  // 件数カウント 
   const counts = comments.reduce((acc, { menu_id }) => {
     acc[menu_id] = (acc[menu_id] || 0) + 1;
     return acc;
