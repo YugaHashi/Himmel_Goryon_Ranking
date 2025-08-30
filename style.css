@@ -5,63 +5,83 @@ html, body {
   color: #fff;
   font-family: sans-serif;
 }
+
 .ranking-list {
   list-style: none;
   margin: 0;
-  padding: 13px;
+  padding: 10px;
 }
+
 .rank-item {
-  margin-bottom: 19px;
+  margin-bottom: 12px;
   text-align: center;
 }
+
 .rank-badge {
-  display: inline-block;
-  width: 80px;
-  height: 40px;
-  line-height: 40px;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90px;
+  height: 60px;
+  margin: 0 auto 5px auto;
   font-weight: bold;
+  font-size: 1rem;
   color: #fff;
-  margin-bottom: 10px;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
 }
-.rank1 .rank-badge { background-image: url('crown-gold.svg'); }
-.rank2 .rank-badge { background-image: url('crown-silver.svg'); }
-.rank3 .rank-badge { background-image: url('crown-bronze.svg'); }
+
+.rank-badge span {
+  position: relative;
+  z-index: 2;
+}
+
+.crown-gold { background-image: url('gold.png'); }
+.crown-silver { background-image: url('silver.png'); }
+.crown-bronze { background-image: url('copper.png'); }
 
 .top-row {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 6px;
 }
+
 .menu-img {
   width: 80px;
   height: 80px;
   border-radius: 50%;
   object-fit: cover;
-  margin-right: 5px;
-  transform: translateX(0.6cm);
+  margin-right: 6px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
 }
+
 .right {
   flex: 1;
   text-align: center;
 }
+
 .popularity {
   font-size: 0.9rem;
-  margin-bottom: 3px;
+  margin-bottom: 2px;
 }
+
+.popularity .heart {
+  color: red; /* 💓を赤色に */
+}
+
 .name {
   font-size: 1rem;
   font-weight: 600;
 }
+
 .separator {
   border-bottom: 1px dotted #fff;
-  margin-bottom: 10px;
+  margin: 6px 0;
 }
+
 .desc {
-  font-size: 0.9rem;
-  line-height: 1.4;
+  font-size: 0.85rem;
+  line-height: 1.3;
 }
