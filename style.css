@@ -67,7 +67,7 @@ html, body {
 /* ===== 順位テキスト ===== */
   .rank-number {
   position: absolute;
-  top: calc(72px - 1.5cm);   /* 72pxから1.5cm分上へ */
+  top: calc(72px - 1.7cm);   /* 72pxから1.5cm分上へ */
   left: 50%;
   transform: translateX(-50%);
   font-weight: 800;
@@ -88,8 +88,11 @@ html, body {
 
 .popularity {
   font-size: 0.9rem;
-  margin-bottom: 0.4em;                /* 順位テキストとの間隔 */
+  margin-bottom: 0.4em;    /* 既存の余白 */
+  position: relative;
+  top: 5mm;               /* 5mm 下に移動 */
 }
+
 .popularity .heart { color: #e11616; }
 
 .name {
