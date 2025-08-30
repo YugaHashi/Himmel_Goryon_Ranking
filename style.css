@@ -23,8 +23,8 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: calc(8px * 0.95);           /* 5% 減 */
-  margin-bottom: calc(6px * 0.95); /* 5% 減 */
+  gap: calc(8px * 0.95);
+  margin-bottom: calc(6px * 0.95);
 }
 
 /* ===== 写真周り ===== */
@@ -32,7 +32,7 @@ html, body {
   position: relative;
   width: 80px;
   height: 80px;
-  transform: translateX(2mm);      /* 写真を 2mm 右へ */
+  transform: translateX(10px); /* ← 料理写真を右へ */
 }
 
 .menu-img {
@@ -43,21 +43,18 @@ html, body {
   box-shadow: 0 4px 12px rgba(0,0,0,0.55);
 }
 
-/* ===== 王冠（写真の上に重ねる） ===== */
+/* ===== 王冠（写真の上に重ねる・少し上に移動） ===== */
 .crown {
   position: absolute;
   left: 50%;
-  top: -30px; /* 写真の上に少し被せる */
-  transform: translateX(-50%);
+  top: -40px; /* ← 写真と重ならないよう少し上へ */
+  transform: translateX(-50%) scale(1.3);
   width: 80px;
   height: 58px;
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
   pointer-events: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 /* 王冠画像：金/銀/銅 */
@@ -65,8 +62,12 @@ html, body {
 .crown-silver { background-image: url('gold.png'); filter: grayscale(100%) brightness(1.35); }
 .crown-bronze { background-image: url('copper.png'); }
 
-/* ===== 順位テキスト（中央・1.2倍・色＆影） ===== */
+/* ===== 順位テキスト（王冠中央に配置） ===== */
 .rank-number {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   font-weight: 800;
   font-size: 1.2rem; /* 1.2倍 */
   text-shadow: 0 2px 3px rgba(0,0,0,0.65);
@@ -95,7 +96,7 @@ html, body {
   text-shadow: 0 1.5px 3px rgba(0,0,0,0.75);
 }
 
-/* 区切りと説明：わずかに圧縮 */
+/* 区切りと説明：少し圧縮 */
 .separator {
   border-bottom: 1px dotted #fff;
   margin: calc(6px * 0.95) 0;
