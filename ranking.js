@@ -47,7 +47,7 @@ async function loadRanking() {
     li.querySelector('.popularity').innerHTML =
       `<span class="heart">❤</span> 人気 × ${item.cnt}人`;
 
-    // 料理名・説明
+    // 料理名・説明// 料理名・説明
     li.querySelector('.name').textContent = menu.name_jp || '';
     const desc = menu.description_jp || '';
     const shortDesc = desc.includes('。') ? desc.split('。')[0] + '。' : desc;
