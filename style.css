@@ -1,4 +1,4 @@
-/* 全体：高さ圧縮（余白を約20%減） */
+/* ===== 全体（余白 5% 減） ===== */
 html, body {
   margin: 0;
   padding: 0;
@@ -10,30 +10,29 @@ html, body {
 .ranking-list {
   list-style: none;
   margin: 0;
-  padding: 8px;              /* 10 -> 8 */
+  padding: calc(10px * 0.95);      /* 5% 減 */
 }
 
 .rank-item {
-  margin-bottom: 10px;       /* 12 -> 10 */
+  margin-bottom: calc(12px * 0.95);/* 5% 減 */
   text-align: center;
 }
 
-/* 上段（写真＋テキスト横並び） */
+/* ===== 上段（写真＋テキスト横並び） ===== */
 .top-row {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 8px;                  /* コンパクトに */
-  margin-bottom: 5px;        /* 6 -> 5 */
+  gap: calc(8px * 0.95);           /* 5% 減 */
+  margin-bottom: calc(6px * 0.95); /* 5% 減 */
 }
 
-/* 写真まわり */
+/* ===== 写真周り ===== */
 .photo-wrap {
   position: relative;
   width: 80px;
   height: 80px;
-  /* 写真の位置を少し右へ（点線の左端と中心の間あたり） */
-  transform: translateX(12px);
+  transform: translateX(2mm);      /* 写真を 2mm 右へ */
 }
 
 .menu-img {
@@ -41,16 +40,16 @@ html, body {
   height: 80px;
   border-radius: 50%;
   object-fit: cover;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.55); /* 画像シャドウ */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.55);
 }
 
-/* 王冠：写真の「上」に重ねて1.3倍で表示 */
+/* ===== 王冠（写真の上に重ねる） ===== */
 .crown {
   position: absolute;
   left: 50%;
-  top: -34px;                /* 写真上に出す */
-  transform: translateX(-50%) scale(1.3); /* 1.3倍 */
-  width: 80px;               /* 基準幅（scaleで拡大） */
+  top: -30px; /* 写真の上に少し被せる */
+  transform: translateX(-50%);
+  width: 80px;
   height: 58px;
   background-repeat: no-repeat;
   background-position: center;
@@ -61,51 +60,48 @@ html, body {
   justify-content: center;
 }
 
-/* 王冠画像（gold / silver / bronze） */
-.crown-gold  { background-image: url('gold.png'); }
-.crown-silver{ background-image: url('gold.png'); filter: grayscale(100%) brightness(1.35); }
-.crown-bronze{ background-image: url('copper.png'); }
+/* 王冠画像：金/銀/銅 */
+.crown-gold   { background-image: url('gold.png'); }
+.crown-silver { background-image: url('gold.png'); filter: grayscale(100%) brightness(1.35); }
+.crown-bronze { background-image: url('copper.png'); }
 
-/* 王冠中央の順位テキスト：1.5倍＆色分け＆影 */
+/* ===== 順位テキスト（中央・1.2倍・色＆影） ===== */
 .rank-number {
   font-weight: 800;
-  font-size: 1.5rem;               /* 1.5倍 */
-  text-shadow: 0 2px 4px rgba(0,0,0,0.7);
+  font-size: 1.2rem; /* 1.2倍 */
+  text-shadow: 0 2px 3px rgba(0,0,0,0.65);
 }
-.rank1 .rank-number { color: #FFD54D; }   /* 金 */
-.rank2 .rank-number { color: #C0C0C0; }   /* 銀 */
-.rank3 .rank-number { color: #B87333; }   /* 銅 */
+.rank1 .rank-number { color: #FFD54D; } /* 金 */
+.rank2 .rank-number { color: #C0C0C0; } /* 銀 */
+.rank3 .rank-number { color: #B87333; } /* 銅 */
 
-/* 右側テキスト */
+/* ===== 右側テキスト ===== */
 .right {
   flex: 1;
   text-align: center;
 }
 
-/* ❤は赤色、文言は「人気 × n人」 */
+/* ❤ は赤色、「人気 × n人」表記 */
 .popularity {
   font-size: 0.9rem;
-  margin-bottom: 2px;
+  margin-bottom: calc(2px * 0.95);
 }
-.popularity .heart,
-.popularity .heart::before {
-  color: #e11616;  /* 赤 */
-}
+.popularity .heart { color: #e11616; }
 
-/* 料理名：テキストに影を付与 */
+/* 料理名：シャドウ付与 */
 .name {
   font-size: 1rem;
   font-weight: 700;
   text-shadow: 0 1.5px 3px rgba(0,0,0,0.75);
 }
 
-/* 区切りの点線・説明文：高さをさらに圧縮 */
+/* 区切りと説明：わずかに圧縮 */
 .separator {
   border-bottom: 1px dotted #fff;
-  margin: 5px 0;             /* 6 -> 5 */
+  margin: calc(6px * 0.95) 0;
 }
 .desc {
   font-size: 0.85rem;
-  line-height: 1.28;         /* 1.3 -> 1.28 */
+  line-height: 1.3;
   margin-top: 2px;
 }
