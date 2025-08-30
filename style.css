@@ -14,10 +14,10 @@ html, body {
 }
 
 .rank-item {
-  position: relative;                   /* rank-number の基準 */
+  position: relative;
   text-align: center;
-  margin-bottom: calc(12px * 2.2);      /* 2.2倍 */
-  padding-top: 40px;                    /* 王冠がせり出す分の余白 */
+  margin-bottom: calc(12px * 2.2);     /* 2.2倍 */
+  padding-top: 40px;                   /* 王冠がせり出す分の余白 */
 }
 
 /* ===== 上段（写真＋テキスト横並び） ===== */
@@ -26,8 +26,8 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: calc(8px * 2.2);                 /* 2.2倍 */
-  margin-bottom: calc(6px * 2.2);       /* 2.2倍 */
+  gap: calc(8px * 2.2);                /* 2.2倍 */
+  margin-bottom: calc(6px * 2.2);      /* 2.2倍 */
 }
 
 /* ===== 写真周り ===== */
@@ -35,7 +35,7 @@ html, body {
   position: relative;
   width: 80px;
   height: 80px;
-  transform: translateX(50px);          /* さらに右へ */
+  transform: translateX(32px);         /* 少し左へ（以前50px） */
 }
 
 .menu-img {
@@ -46,7 +46,7 @@ html, body {
   box-shadow: 0 4px 12px rgba(0,0,0,0.55);
 }
 
-/* ===== 王冠（写真の上に重ねる） ===== */
+/* ===== 王冠 ===== */
 .crown {
   position: absolute;
   left: 50%;
@@ -58,27 +58,27 @@ html, body {
   background-position: center;
   background-size: contain;
   pointer-events: none;
-  z-index: 3;                           /* 王冠は一番上 */
+  z-index: 3;
 }
 .crown-gold   { background-image: url('gold.png'); }
 .crown-silver { background-image: url('gold.png'); filter: grayscale(100%) brightness(1.35); }
 .crown-bronze { background-image: url('copper.png'); }
 
-/* ===== 順位テキスト（王冠から独立・アイテム中央） ===== */
+/* ===== 順位テキスト ===== */
 .rank-number {
   position: absolute;
-  top: 50%;                              /* .rank-item の中央 */
+  top: 72px;                           /* 「人気×n人」の下あたりに配置 */
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
   font-weight: 800;
-  font-size: 0.84rem;                    /* 0.7倍の大きさを維持 */
+  font-size: 1.1rem;                   /* 0.84rem → 1.1rem（1.3倍） */
   text-shadow: 0 2px 3px rgba(0,0,0,0.65);
-  z-index: 1;                            /* 王冠より下の層 */
+  z-index: 2;
   pointer-events: none;
 }
-.rank1 > .rank-number { color: #FFD54D; }/* 金 */
-.rank2 > .rank-number { color: #C0C0C0; }/* 銀 */
-.rank3 > .rank-number { color: #B87333; }/* 銅 */
+.rank1 > .rank-number { color: #FFD54D; }
+.rank2 > .rank-number { color: #C0C0C0; }
+.rank3 > .rank-number { color: #B87333; }
 
 /* ===== 右側テキスト ===== */
 .right {
@@ -88,11 +88,12 @@ html, body {
 
 .popularity {
   font-size: 0.9rem;
-  margin-bottom: calc(2px * 2.2);        /* 2.2倍 */
+  margin-bottom: 0.4em;                /* 順位テキストとの間隔 */
 }
 .popularity .heart { color: #e11616; }
 
 .name {
+  margin-top: 1.6em;                   /* 順位テキスト分下げる */
   font-size: 1rem;
   font-weight: 700;
   text-shadow: 0 1.5px 3px rgba(0,0,0,0.75);
@@ -101,7 +102,7 @@ html, body {
 /* 区切りと説明 */
 .separator {
   border-bottom: 1px dotted #fff;
-  margin: calc(6px * 2.2) 0;             /* 2.2倍 */
+  margin: calc(6px * 2.2) 0;
 }
 .desc {
   font-size: 0.85rem;
