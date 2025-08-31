@@ -1,4 +1,4 @@
-/* ===== 全体（余白 2.2倍） ===== */
+/* ===== 全体（余白 1.76倍＝0.8倍に縮小） ===== */
 html, body {
   margin: 0;
   padding: 0;
@@ -10,14 +10,14 @@ html, body {
 .ranking-list {
   list-style: none;
   margin: 0;
-  padding: calc(10px * 2.2);           /* 2.2倍 */
+  padding: calc(10px * 1.76);           /* ← 2.2→1.76 */
 }
 
 .rank-item {
   position: relative;
   text-align: center;
-  margin-bottom: calc(12px * 2.2);     /* 2.2倍 */
-  padding-top: 40px;                   /* 王冠がせり出す分の余白 */
+  margin-bottom: calc(12px * 1.76);     /* ← 2.2→1.76 */
+  padding-top: 40px;                    /* 王冠分はそのまま */
 }
 
 /* ===== 上段（写真＋テキスト横並び） ===== */
@@ -26,8 +26,8 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: calc(8px * 2.2);                /* 2.2倍 */
-  margin-bottom: calc(6px * 2.2);      /* 2.2倍 */
+  gap: calc(8px * 1.76);                /* ← 2.2→1.76 */
+  margin-bottom: calc(6px * 1.76);      /* ← 2.2→1.76 */
 }
 
 /* ===== 写真周り ===== */
@@ -35,7 +35,7 @@ html, body {
   position: relative;
   width: 80px;
   height: 80px;
-  transform: translateX(28px);         /* 少し左へ（以前50px） */
+  transform: translateX(28px);
 }
 
 .menu-img {
@@ -65,9 +65,9 @@ html, body {
 .crown-bronze { background-image: url('copper.png'); }
 
 /* ===== 順位テキスト ===== */
-  .rank-number {
+.rank-number {
   position: absolute;
-  top: calc(72px - 1.7cm);   /* 72pxから1.5cm分上へ */
+  top: calc(72px - 1.7cm);   
   left: 50%;
   transform: translateX(-50%);
   font-weight: 800;
@@ -88,15 +88,15 @@ html, body {
 
 .popularity {
   font-size: 0.9rem;
-  margin-bottom: 0.4em;    /* 既存の余白 */
+  margin-bottom: 0.4em;
   position: relative;
-  top: 5mm;               /* 5mm 下に移動 */
+  top: 5mm;   /* ← 指定通り残す */
 }
 
 .popularity .heart { color: #e11616; }
 
 .name {
-  margin-top: 1.6em;                   /* 順位テキスト分下げる */
+  margin-top: 1.6em;
   font-size: 1rem;
   font-weight: 700;
   text-shadow: 0 1.5px 3px rgba(0,0,0,0.75);
@@ -105,7 +105,7 @@ html, body {
 /* 区切りと説明 */
 .separator {
   border-bottom: 1px dotted #fff;
-  margin: calc(6px * 2.2) 0;
+  margin: calc(6px * 1.76) 0;          /* ← 2.2→1.76 */
 }
 .desc {
   font-size: 0.85rem;
