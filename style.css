@@ -1,4 +1,4 @@
-/* ===== 全体（余白 1.76倍＝0.8倍に縮小） ===== */
+/* ===== 全体（余白を0.8倍に縮小） ===== */
 html, body {
   margin: 0;
   padding: 0;
@@ -10,14 +10,14 @@ html, body {
 .ranking-list {
   list-style: none;
   margin: 0;
-  padding: calc(10px * 1.76);           /* ← 2.2→1.76 */
+  padding: calc(10px * 1.408);         /* ← 縦余白を0.8倍に */
 }
 
 .rank-item {
   position: relative;
   text-align: center;
-  margin-bottom: calc(12px * 1.76);     /* ← 2.2→1.76 */
-  padding-top: 40px;                    /* 王冠分はそのまま */
+  margin-bottom: calc(12px * 1.408);   /* ← 縦余白を0.8倍に */
+  padding-top: 40px;                   /* 王冠分はそのまま */
 }
 
 /* ===== 上段（写真＋テキスト横並び） ===== */
@@ -26,8 +26,8 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: calc(8px * 1.76);                /* ← 2.2→1.76 */
-  margin-bottom: calc(6px * 1.76);      /* ← 2.2→1.76 */
+  gap: calc(8px * 1.76);                /* 横方向はそのまま */
+  margin-bottom: calc(6px * 1.408);     /* ← 縦余白を0.8倍に */
 }
 
 /* ===== 写真周り ===== */
@@ -105,7 +105,7 @@ html, body {
 /* 区切りと説明 */
 .separator {
   border-bottom: 1px dotted #fff;
-  margin: calc(6px * 1.76) 0;          /* ← 2.2→1.76 */
+  margin: calc(6px * 1.408) 0;         /* ← 縦余白を0.8倍に */
 }
 .desc {
   font-size: 0.85rem;
